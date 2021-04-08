@@ -14,8 +14,8 @@ class CreatesFlatUserPivotTable extends Migration
     public function up()
     {
         Schema::create('flat_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigIncrements('id');
+            $table->bigIncrements('user_id');
+            $table->string('flat_id');
         });
     }
 

@@ -13,7 +13,7 @@ class CreateBathroomHasTable extends Migration
      */
     public function up()
     {
-        Schema::table('bathroom_has', function (Blueprint $table) {
+        Schema::create('bathroom_has', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('bathroom_id');

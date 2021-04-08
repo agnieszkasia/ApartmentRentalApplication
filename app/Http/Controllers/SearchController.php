@@ -7,12 +7,17 @@ use App\Flat;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use mysqli;
 
 class SearchController extends Controller
 {
     public function index(Flat $flat)
     {
-        return view('flats.search', compact('flat'));
+        $conn = mysqli_connect('127.0.0.1','root' , '','kwadrat');
+
+        $query = "SELECT * FROM cities ORDER BY city_name ASC";
+        $result = mysqli_query($conn,$query);
+        return view('flats.search', compact('flat', 'result'));
     }
 
     public function get(User $user, Request $request, Flat $flat)
@@ -150,6 +155,7 @@ class SearchController extends Controller
 
     public function show(City $city, Flat $flat)
     {
+
         return view('flats.searchResult' , compact('city', 'flat'));
     }
 

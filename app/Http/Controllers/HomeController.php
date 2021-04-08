@@ -22,9 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Flat $flat, User $user)
-    {
-        $users = auth()->user()->pluck('id');
+    public function index(Flat $flat, User $user){
         $follows = (auth()->user()) ? auth()->user()->following->contains($flat->id) : false;
         return view('home', compact('flat', 'follows', 'user'));
     }

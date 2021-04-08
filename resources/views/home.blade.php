@@ -116,6 +116,7 @@
             <div class="cards-header">TWOJE AKTYWNE OGŁOSZENIA</div>
             <div class="top-right mr-4"><a href="/flat/create">Dodaj ogłoszenie</a></div>
             <div class="card-body">
+                @if(auth()->user()->flats !== null)
                 @foreach(auth()->user()->flats as $flat)
                     @if($flat->visibility != 1)
 
@@ -175,6 +176,7 @@
 
                     @endif
                 @endforeach
+                @endif
             </div>
         </div>
     </div>

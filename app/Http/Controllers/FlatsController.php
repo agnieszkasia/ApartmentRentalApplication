@@ -7,6 +7,7 @@ use App\Photo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use mysqli;
 
 class FlatsController extends Controller
 {
@@ -170,6 +171,8 @@ class FlatsController extends Controller
 
     public function search(Flat $flat)
     {
+
+
         return view('flats.search', compact('flat'));
     }
 

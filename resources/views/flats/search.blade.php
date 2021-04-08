@@ -40,23 +40,18 @@ $today = $year . '-' . $month . '-' . $day;
                         <div class="col-md-4 d-flex">
                             <label for="city_id" class="col-6 mt-4">Miasto</label>
                             <?php
-                            $conn = new mysqli('127.0.0.1','root' , '','kwadrat');
 
-                            $query = "SELECT * FROM cities ORDER BY city_name ASC";
-                            $result = $conn->query($query);
 
                             ?>
                             <select id="city_id" class="col-6 mt-3 form-control" name="city_id">
-                                <?php
-                                    if ($result->num_rows >0){
-                                        while ($row = $result->fetch_assoc()){
+                                    @if ($result->num_rows >0)
+                                        @while ($row = $result->fetch_assoc()){
                                         echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
-                                        }
-                                    }else{
+                                        @endwhile
+                                    @else
                                         echo '<option value="">Brak</option>';
 
-                                    }
-                                ?>
+                                    @endif
                             </select>
                         </div>
 
