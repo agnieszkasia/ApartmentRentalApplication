@@ -13,10 +13,8 @@ class SearchController extends Controller
 {
     public function index(Flat $flat)
     {
-        $conn = mysqli_connect('127.0.0.1','root' , '','kwadrat');
 
-        $query = "SELECT * FROM cities ORDER BY city_name ASC";
-        $result = mysqli_query($conn,$query);
+        $result = DB::table('cities')->orderBy('city_name')->get();
         return view('flats.search', compact('flat', 'result'));
     }
 

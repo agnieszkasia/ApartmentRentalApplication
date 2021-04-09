@@ -44,12 +44,12 @@ $today = $year . '-' . $month . '-' . $day;
 
                             ?>
                             <select id="city_id" class="col-6 mt-3 form-control" name="city_id">
-                                    @if ($result->num_rows >0)
-                                        @while ($row = $result->fetch_assoc()){
-                                        echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
-                                        @endwhile
+                                    @if (count($result) >0)
+                                        @foreach ($result as $row)
+                                            <option value="{{$row->id}}"> {{$row->city_name}}</option>;
+                                        @endforeach
                                     @else
-                                        echo '<option value="">Brak</option>';
+                                            <option value="">Brak</option>';
 
                                     @endif
                             </select>
